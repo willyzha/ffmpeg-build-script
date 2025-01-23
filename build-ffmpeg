@@ -949,6 +949,15 @@ if build "FreeType2" "2.13.3"; then
 fi
 
 CONFIGURE_OPTIONS+=("--enable-libfreetype")
+
+# https://github.com/harfbuzz/harfbuzz/releases/download/10.2.0/harfbuzz-$CURRENT_PACKAGE_VERSION.tar.xz
+if build "harfbuzz" "10.2.0"; then
+  download "https://github.com/harfbuzz/harfbuzz/releases/download/10.2.0/harfbuzz-$CURRENT_PACKAGE_VERSION.tar.xz"
+  execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
+  execute make -j $MJOBS
+  execute make install
+  build_done "harfbuzz" $CURRENT_PACKAGE_VERSION
+fi
 CONFIGURE_OPTIONS+=("--enable-libharfbuzz")
 
 if $NONFREE_AND_GPL; then
