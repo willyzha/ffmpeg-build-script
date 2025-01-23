@@ -951,7 +951,7 @@ fi
 CONFIGURE_OPTIONS+=("--enable-libfreetype")
 
 # https://github.com/harfbuzz/harfbuzz/releases/download/10.2.0/harfbuzz-$CURRENT_PACKAGE_VERSION.tar.xz
-if build "harfbuzz" "10.2.0"; then
+if build "harfbuzz" "10.1.0"; then
   download "https://github.com/harfbuzz/harfbuzz/releases/download/10.2.0/harfbuzz-$CURRENT_PACKAGE_VERSION.tar.xz"
   execute meson build --prefix="${WORKSPACE}" --buildtype=release --default-library=static --libdir="${WORKSPACE}"/lib
   execute ninja -C build
